@@ -350,6 +350,20 @@ main {
 	color: #F0F0F0;
 }
 
+.register-form-agree__text_animated {
+	animation: change-color 2s;
+}
+
+.register-form-agree__text_animated  .register-form-agree__link {
+	animation: change-color 2s;
+}
+
+@keyframes change-color {
+	0% {color: #F0F0F0;}
+	50% {color: #be3131;}
+	100% {color: #F0F0F0;}
+}
+
 .register-form-agree__link {
 	text-decoration: underline;
 	color: #F0F0F0;
@@ -372,6 +386,13 @@ main {
 .nav-mobile-burger,
 .nav-mobile-menu-close {
 	display: none;
+}
+
+.register-form__help-block {
+	color: #be3131;
+	margin-bottom: -13px;
+    display: block;
+    font-size: 13px;
 }
 
 /* Мобильные версии */
@@ -665,3 +686,4 @@ main {
 		overflow-y: auto;
 	}
 }
+/* Мобильные версии END */
