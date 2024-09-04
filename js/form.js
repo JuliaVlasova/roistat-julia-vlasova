@@ -1,19 +1,20 @@
 "use strict";
 
 $(document).ready(function() {
+    let formTel = $("#register-form-tel");
+    let formSite = $("#register-form-site");
+    let formName = $("#register-form-name");
+
+    const digitsOnlyPattern = /^\d+$/;
+    const urlPattern = new RegExp('^(https?:\\/\\/)?'   + // проверка протокола
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'  + // проверка имени домена
+        '((\\d{1,3}\\.){3}\\d{1,3}))'                       + // проверка ip адреса 
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'                   + // проверка порта и пути
+        '(\\?[;&a-z\\d%_.~+=-]*)?'                          + // проверка параметров запроса
+        '(\\#[-a-z\\d_]*)?$','i');                            // проверка хэша
+
+        
     let validateForm = function() {
-        let formTel = $("#register-form-tel");
-        let formSite = $("#register-form-site");
-        let formName = $("#register-form-name");
-
-        const digitsOnlyPattern = /^\d+$/;
-        const urlPattern = new RegExp('^(https?:\\/\\/)?'   + // проверка протокола
-            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'  + // проверка имени домена
-            '((\\d{1,3}\\.){3}\\d{1,3}))'                       + // проверка ip адреса 
-            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'                   + // проверка порта и пути
-            '(\\?[;&a-z\\d%_.~+=-]*)?'                          + // проверка параметров запроса
-            '(\\#[-a-z\\d_]*)?$','i');                            // проверка хэша
-
         function validateName() { // Проверка имени
             if ($(formName).val() == "") {
                 $(formName).parents(".register-form__group").find(".hidden").show();
