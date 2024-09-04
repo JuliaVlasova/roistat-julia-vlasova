@@ -540,6 +540,10 @@ main {
         height: 100%;
         border-radius: 0;
     }
+
+	.popup-overlay {
+		border: none;
+	}
 }
 
 @media screen and (max-width: 360px) {
@@ -650,4 +654,14 @@ main {
         top: -285px;
         left: 245px;
     }
+}
+
+@media screen and (max-height: 500px) {
+	.popup-form {
+		height: 600px;
+	}
+
+	.popup-window {
+		overflow-y: auto;
+	}
 }
