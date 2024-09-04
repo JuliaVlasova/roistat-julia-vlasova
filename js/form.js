@@ -74,15 +74,11 @@ $(document).ready(function() {
             }
         }
 
-
-
         validateName();
         validateSite();
         validateTel();
         validateCheckbox();
     }
-
-
 
     $("#register-form-button").click(function() {
         validateForm();
