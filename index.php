@@ -81,7 +81,7 @@
     </div>
     <div class="r-wrapper">
         <nav>
-            <a href="/">
+            <a href="#"> <!-- Тут обычно стоит ссылка на домашнюю страницу -->
                 <svg class="r-logo">
                     <use xlink:href="#logo"></use>
                 </svg>
