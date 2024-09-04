@@ -396,9 +396,13 @@ main {
 }
 
 /* Мобильные версии */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1260px) {  /* 1024px в дизайне */
 	.r-wrapper {
 		padding: 40px 32px 86px;
+	}
+
+	.main-title-container {
+		max-width: 914px;
 	}
 
 	.main-title {
@@ -482,7 +486,7 @@ main {
 	}
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 960px) { /* 768px в дизайне */
 	.r-wrapper {
 		padding: 40px 20px 77px;
 	}
@@ -491,6 +495,10 @@ main {
 		padding: 15px 20px;
 		margin-bottom: 64px;
 	}
+
+	.main-title-container {
+        max-width: 643px;
+    }
 
 	.main-title {
 		font-size: 94px;
@@ -567,10 +575,14 @@ main {
 	}
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 720px) { /* 360px в дизайне */
 	.r-wrapper {
 		padding: 20px 20px 278px;
 	}
+
+	.main-title-container {
+        max-width: 316px;
+    }
 
 	.main-title {
 		font-size: 46px;
