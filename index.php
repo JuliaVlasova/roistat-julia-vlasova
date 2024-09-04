@@ -14,12 +14,14 @@
     <link rel="stylesheet" href="style/suisse-intl-font.css" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=block" rel="stylesheet">
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="js/popup.js" type="text/javascript"></script>
     <script src="js/form.js" type="text/javascript"></script>
+    <script src="js/mobile-menu.js" type="text/javascript"></script>
+
 </head>
 
 <body>
@@ -56,15 +58,18 @@
                             </div>
                         </div>
 
-                        <input type="button" class="register-form__button r-button" value="Получить код" id="register-form-button">
+                        <input type="button" class="register-form__button r-button" value="Получить код"
+                            id="register-form-button">
 
                         <label for="register-form-input" class="register-form-agree">
-                            <input type="checkbox" id="register-form-input" name="register-form-agreement" value="" class="register-form-agree__checkbox">
+                            <input type="checkbox" id="register-form-input" name="register-form-agreement" value=""
+                                class="register-form-agree__checkbox">
                             <span class="register-form-agree__checkmark"></span>
                             <span class="register-form-agree__text">
                                 Отправляя сведения через электронную форму, вы даете согласие на обработку персональных
                                 данных, в том числе сбор, хранение и передачу третьим лицам представленной вами
-                                информации на условиях <a class="register-form-agree__link" href="#">Политики обработки персональных данных</a>.
+                                информации на условиях <a class="register-form-agree__link" href="#">Политики обработки
+                                    персональных данных</a>.
                             </span>
                         </label>
                     </form>
@@ -86,6 +91,12 @@
                 <a href="#" class="nav-buttons__link nav-buttons__link_active">Наши предложения</a>
                 <a href="#" class="nav-buttons__link">Цены</a>
             </div>
+            <svg class="nav-mobile-burger">
+                <use xlink:href="#nav-mobile-burger"></use>
+            </svg>
+            <svg class="nav-mobile-menu-close">
+                <use xlink:href="#close-popup"></use>
+            </svg>
         </nav>
         <main>
             <div class="main-title-container">
@@ -123,8 +134,13 @@
             <use xlink:href="#star"></use>
         </svg>
 
-        <img src="images/ribbon-yellow@2x.png" width="1440" height="241" alt="" class="ribbon-yellow"> 
-        <img src="images/ribbon-viola@2x.png" width="1440" height="482" alt="" class="ribbon-viola"> 
+        <img src="images/ribbon-yellow@2x.png" width="1440" height="241" alt="" class="ribbon-yellow">
+        <img src="images/ribbon-viola@2x.png" width="1440" height="482" alt="" class="ribbon-viola">
+
+        <div class="info-block_mobile">
+            *Акция не распространяется на подключение опций, лимитов, которые были подключены ранее до 1.11.2023
+            Количество предложений ограничено
+        </div>
     </div>
 
 
@@ -197,6 +213,10 @@
             <path
                 d="M22.0014 8L16 14L10 8L8 10L14 16L8 22L10 24L16 18L22.0014 24L24.0014 22L18.0014 16L24.0014 10L22.0014 8Z"
                 fill="#F0F0F0" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" id="nav-mobile-burger">
+            <path d="M15 19H47" stroke="#E0EAFF" stroke-width="2" stroke-linecap="round" />
+            <path d="M31 29H47" stroke="#E0EAFF" stroke-width="2" stroke-linecap="round" />
         </symbol>
     </svg>
 </body>
