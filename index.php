@@ -16,15 +16,65 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=block" rel="stylesheet">
 
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="js/popup.js" type="text/javascript"></script>
     <script src="js/form.js" type="text/javascript"></script>
     <script src="js/mobile-menu.js" type="text/javascript"></script>
-
 </head>
 
 <body>
+    <?php
+        // define variables and set to empty values
+        $nameErr = $siteErr = $telErr = $checkboxErr = "";
+        $name = $site = $tel = $checkbox = "";
+        $send = false;
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (empty($_POST["name"])) {
+                $nameErr = "Имя обязательно";
+            } else {
+                $name = test_input($_POST["name"]);
+                // check if name only contains letters and whitespace
+                if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
+                $nameErr = "Допустимы только буквы и пробелы";
+                }
+            }
+            
+            if (empty($_POST["tel"])) {
+                $telErr = "Телефон обязателен";
+            } else {
+                $tel = test_input($_POST["tel"]);
+                // check if tel number is well-formed
+                if (!preg_match("/\+7 (\d\d\d) \d\d\d-\d\d-\d\d/",$tel)) {
+                    $telErr = "Неверный номер";
+                }
+            } 
+                
+            if (empty($_POST["site"])) {
+                $site = "";
+            } else {
+                $site = test_input($_POST["site"]);
+                // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
+                if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$site)) {
+                $siteErr = "Неверный URL";
+                }
+            }
+
+            if (empty($_POST["checkbox"])) {
+                $checkboxErr = "Поле должно быть отмечено";
+            } else {
+                $checkbox = test_input($_POST["checkbox"]);
+            }
+        }
+
+        function test_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
+    ?>
+
     <div class="popup-overlay">
         <div class="popup-window relative">
             <svg class="popup-window__close">
@@ -33,11 +83,12 @@
             <div class="popup-form">
                 <div class="popup-form__title">Регистрация</div>
                 <div class="popup-form__form">
-                    <form id="register-form" class="register-form" action="" method="POST">
+                    <form id="register-form" class="register-form" method="POST"
+                        action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                         <div class="register-form__group">
                             <div class="register-form__container">
-                                <input id="register-form-name" class="register-form__field" type="text"
-                                    name="RegisterForm[name]" placeholder="Имя" value="">
+                                <input id="register-form-name" class="register-form__field" type="text" name="name"
+                                    placeholder="Имя" value="<?php echo $name;?>">
                             </div>
 
                             <div class="hidden">
@@ -47,8 +98,8 @@
 
                         <div class="register-form__group">
                             <div class="register-form__container">
-                                <input id="register-form-site" class="register-form__field" name="RegisterForm[site]"
-                                    placeholder="Сайт компании" value="" type="url">
+                                <input id="register-form-site" class="register-form__field" name="site"
+                                    placeholder="Сайт компании" value="<?php echo $site;?>" type="url">
                             </div>
                             <div class="hidden">
                                 <span class="register-form__help-block"></span>
@@ -57,19 +108,19 @@
 
                         <div class="register-form__group">
                             <div class="register-form__container">
-                                <input id="register-form-tel" class="register-form__field" name="RegisterForm[tel]"
-                                    placeholder="Телефон" value="" type="tel">
+                                <input id="register-form-tel" class="register-form__field" name="tel"
+                                    placeholder="Телефон" value="<?php echo $tel;?>" type="tel">
                             </div>
                             <div class="hidden">
                                 <span class="register-form__help-block"></span>
                             </div>
                         </div>
 
-                        <input type="button" class="register-form__button r-button" value="Получить код"
+                        <input type="submit" name="submit" class="register-form__button r-button register-form__button_disabled" value="Получить код"
                             id="register-form-button">
 
                         <label for="register-form-input" class="register-form-agree">
-                            <input type="checkbox" id="register-form-input" name="register-form-agreement" value=""
+                            <input type="checkbox" id="register-form-input" name="agreement" value="<?php echo $checkbox;?>"
                                 class="register-form-agree__checkbox">
                             <span class="register-form-agree__checkmark"></span>
                             <span class="register-form-agree__text">
@@ -80,6 +131,19 @@
                             </span>
                         </label>
                     </form>
+
+                    <div id="results">
+                    <?php
+echo "<h2>Your Input:</h2>";
+echo $name;
+echo "<br>";
+echo $tel;
+echo "<br>";
+echo $site;
+echo "<br>";
+echo $checkbox;
+?>
+                    </div>
                 </div>
             </div>
         </div>

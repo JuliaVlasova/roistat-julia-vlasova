@@ -365,6 +365,11 @@ main {
 }
 /* Popup END */
 
+.register-form__button.register-form__button_disabled {
+	background: #53535b;
+	pointer-events: none;
+}
+
 .r-button {
 	background: #8F8FFF;
 }
