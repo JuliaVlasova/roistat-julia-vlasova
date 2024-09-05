@@ -10,6 +10,10 @@ let hideModalOverlay = function () {
 	$(".popup-overlay").fadeOut(200);
 };
 
+let hideResults = function () {
+	$("#results").fadeOut(500);
+};
+
 $(document).ready(function() {
     $(".popup-opener").click(function() {
         showModalOverlay();
@@ -18,4 +22,9 @@ $(document).ready(function() {
     $(".popup-window__close").click(function() {
         hideModalOverlay();
     });
+
+    $(".results__close").click(function() {
+        hideResults();
+    });
+
 });

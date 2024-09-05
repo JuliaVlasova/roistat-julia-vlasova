@@ -32,21 +32,31 @@
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (empty($_POST["name"])) {
                 $nameErr = "Имя обязательно";
+                $send = false;
             } else {
                 $name = test_input($_POST["name"]);
                 // check if name only contains letters and whitespace
                 if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
-                $nameErr = "Допустимы только буквы и пробелы";
+                    $nameErr = "Допустимы только буквы и пробелы";
+                    $send = false;
+                } else {
+                    $nameErr = "";
+                    $send = true;
                 }
             }
             
             if (empty($_POST["tel"])) {
                 $telErr = "Телефон обязателен";
+                $send = false;
             } else {
                 $tel = test_input($_POST["tel"]);
                 // check if tel number is well-formed
                 if (!preg_match("/\+7 (\d\d\d) \d\d\d-\d\d-\d\d/",$tel)) {
                     $telErr = "Неверный номер";
+                    $send = false;
+                } else {
+                    $telErr = "";
+                    $send = true;
                 }
             } 
                 
@@ -56,14 +66,20 @@
                 $site = test_input($_POST["site"]);
                 // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
                 if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$site)) {
-                $siteErr = "Неверный URL";
+                    $siteErr = "Неверный URL";
+                    $send = false;
+                } else {
+                    $siteErr = "";
+                    $send = true;
                 }
             }
 
             if (empty($_POST["checkbox"])) {
                 $checkboxErr = "Поле должно быть отмечено";
+                $send = false;
             } else {
                 $checkbox = test_input($_POST["checkbox"]);
+                $send = true;
             }
         }
 
@@ -74,6 +90,16 @@
             return $data;
         }
     ?>
+
+    <?php if ($_SERVER['REQUEST_METHOD'] == 'POST') { ?>
+    <div id="results">
+        <svg class="results__close">
+            <use xlink:href="#close-popup"></use>
+        </svg>
+        <h2>Регистрация прошла успешно</h2>
+        <p>На ваш телефон должен прийти номер</p>
+    </div>
+    <?php } ?>
 
     <div class="popup-overlay">
         <div class="popup-window relative">
@@ -116,12 +142,13 @@
                             </div>
                         </div>
 
-                        <input type="submit" name="submit" class="register-form__button r-button register-form__button_disabled" value="Получить код"
+                        <input type="submit" name="submit"
+                            class="register-form__button r-button register-form__button_disabled" value="Получить код"
                             id="register-form-button">
 
                         <label for="register-form-input" class="register-form-agree">
-                            <input type="checkbox" id="register-form-input" name="agreement" value="<?php echo $checkbox;?>"
-                                class="register-form-agree__checkbox">
+                            <input type="checkbox" id="register-form-input" name="agreement"
+                                value="<?php echo $checkbox;?>" class="register-form-agree__checkbox">
                             <span class="register-form-agree__checkmark"></span>
                             <span class="register-form-agree__text">
                                 Отправляя сведения через электронную форму, вы даете согласие на обработку персональных
@@ -131,25 +158,11 @@
                             </span>
                         </label>
                     </form>
-
-                    <div id="results">
-                    <?php
-echo "<h2>Your Input:</h2>";
-echo $name;
-echo "<br>";
-echo $tel;
-echo "<br>";
-echo $site;
-echo "<br>";
-echo $checkbox;
-?>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    </div>
+
     <div class="r-wrapper">
         <nav>
             <a href="#">

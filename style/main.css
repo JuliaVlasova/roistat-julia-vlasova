@@ -395,6 +395,42 @@ main {
     font-size: 13px;
 }
 
+#results {
+	color: #fff;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 60;
+	background: #151515;
+	padding: 60px 40px;
+	text-align: center;
+}
+
+#results h2 {
+	font-size: 50px;
+	line-height: 1.4;
+	color: #fe64fa;
+}
+
+#results p {
+	font-size: 20px;
+	line-height: 1.4;
+}
+
+.results__close {
+	--size: 30px;
+	width: var(--size);
+	height: var(--size);
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	cursor: pointer;
+}
+
 /* Мобильные версии */
 @media screen and (max-width: 1260px) {  /* 1024px в дизайне */
 	.r-wrapper {
