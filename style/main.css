@@ -252,11 +252,11 @@ main {
 }
 
 .register-form__field {
-	background: linear-gradient(129.19deg, rgba(250, 250, 250, 0.1) -0.77%, rgba(164, 164, 164, 0) 140.72%);
-	border: 1px solid #414141;
+	background: linear-gradient(180deg, #3D3D3D 0%, #323232 140.72%);
+	border: none;
 	box-shadow: 14.22px 15.23px 43.67px 0px #C2C2C20D inset, 0px 65px 130px -5.08px #0000000D;
 	width: 100%;
-	height: 56px;
+	height: 54px;
 	font-family: "SuisseIntl", Arial, sans-serif;
 	font-size: 20px;
 	font-weight: 400;
@@ -279,7 +279,11 @@ main {
 }
 .register-form__container {
 	border-radius: 8px;
+	width: 100%;
+	padding: 1px;
 	overflow: hidden;
+	background: linear-gradient(134.65deg, #ABABAB -16.8%, rgba(147, 147, 147, 0) 110.94%);
+	box-shadow: 14.22px 15.23px 43.67px 0px #C2C2C20D inset, 0px 65px 130px -5.08px #0000000D;
 }
 
 .register-form__button {
