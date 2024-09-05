@@ -1,9 +1,15 @@
 "use strict";
 
 $(document).ready(function() {
-    let formTel = $("#register-form-tel");
-    let formSite = $("#register-form-site");
-    let formName = $("#register-form-name");
+    const formTel = $("#register-form-tel");
+    const formSite = $("#register-form-site");
+    const formName = $("#register-form-name");
+
+    const noName = "Надо заполнить имя";
+    const noSite = "Надо ввести сайт";
+    const wrongSite = "Введен неверный сайт";
+    const noTel = "Надо ввести номер телефона";
+    const wrongTel = "Номер введен неверно";
 
     const digitsOnlyPattern = /^\d+$/;
     const urlPattern = new RegExp('^(https?:\\/\\/)?'   + // проверка протокола
@@ -13,12 +19,12 @@ $(document).ready(function() {
         '(\\?[;&a-z\\d%_.~+=-]*)?'                          + // проверка параметров запроса
         '(\\#[-a-z\\d_]*)?$','i');                            // проверка хэша
 
-        
+
     let validateForm = function() {
         function validateName() { // Проверка имени
             if ($(formName).val() == "") {
                 $(formName).parents(".register-form__group").find(".hidden").show();
-                $(formName).parents(".register-form__group").find(".register-form__help-block").text("Надо заполнить имя");
+                $(formName).parents(".register-form__group").find(".register-form__help-block").text(noName);
                 return false;
             } else {
                 $(formName).parents(".register-form__group").find(".hidden").hide();
@@ -31,10 +37,10 @@ $(document).ready(function() {
             let formSiteValue = $(formSite).val();
             if (formSiteValue == "") {
                 $(formSite).parents(".register-form__group").find(".hidden").show();
-                $(formSite).parents(".register-form__group").find(".register-form__help-block").text("Надо ввести сайт");
+                $(formSite).parents(".register-form__group").find(".register-form__help-block").text(noSite);
                 return false;
             } else if(!urlPattern.test(formSiteValue)) {
-                $(formSite).parents(".register-form__group").find(".register-form__help-block").text("Введен неверный сайт");
+                $(formSite).parents(".register-form__group").find(".register-form__help-block").text(wrongSite);
                 return false;
             } else {
                 $(formSite).parents(".register-form__group").find(".hidden").hide();
@@ -47,10 +53,10 @@ $(document).ready(function() {
             let formTelValue = $(formTel).val();
             if (formTelValue == "") {
                 $(formTel).parents(".register-form__group").find(".hidden").show();
-                $(formTel).parents(".register-form__group").find(".register-form__help-block").text("Надо ввести номер телефона");
+                $(formTel).parents(".register-form__group").find(".register-form__help-block").text(noTel);
                 return false;
             }  else if(!digitsOnlyPattern.test(formTelValue)) {
-                $(formTel).parents(".register-form__group").find(".register-form__help-block").text("Это не телефонный номер");
+                $(formTel).parents(".register-form__group").find(".register-form__help-block").text(wrongTel);
                 return false;
             } else {
                 $(formTel).parents(".register-form__group").find(".hidden").hide();

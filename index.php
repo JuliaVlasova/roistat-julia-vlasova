@@ -35,24 +35,31 @@
                 <div class="popup-form__form">
                     <form id="register-form" class="register-form" action="" method="POST">
                         <div class="register-form__group">
-                            <input id="register-form-name" class="register-form__field" type="text"
-                                name="RegisterForm[name]" placeholder="Имя" value="">
+                            <div class="register-form__container">
+                                <input id="register-form-name" class="register-form__field" type="text"
+                                    name="RegisterForm[name]" placeholder="Имя" value="">
+                            </div>
+
                             <div class="hidden">
                                 <span class="register-form__help-block"></span>
                             </div>
                         </div>
 
                         <div class="register-form__group">
-                            <input id="register-form-site" class="register-form__field" name="RegisterForm[site]"
-                                placeholder="Сайт компании" value="" type="url">
+                            <div class="register-form__container">
+                                <input id="register-form-site" class="register-form__field" name="RegisterForm[site]"
+                                    placeholder="Сайт компании" value="" type="url">
+                            </div>
                             <div class="hidden">
                                 <span class="register-form__help-block"></span>
                             </div>
                         </div>
 
                         <div class="register-form__group">
-                            <input id="register-form-tel" class="register-form__field" name="RegisterForm[tel]"
-                                placeholder="Телефон" value="" type="tel">
+                            <div class="register-form__container">
+                                <input id="register-form-tel" class="register-form__field" name="RegisterForm[tel]"
+                                    placeholder="Телефон" value="" type="tel">
+                            </div>
                             <div class="hidden">
                                 <span class="register-form__help-block"></span>
                             </div>
@@ -81,7 +88,8 @@
     </div>
     <div class="r-wrapper">
         <nav>
-            <a href="#"> <!-- Тут обычно стоит ссылка на домашнюю страницу -->
+            <a href="#">
+                <!-- Тут обычно стоит ссылка на домашнюю страницу -->
                 <svg class="r-logo">
                     <use xlink:href="#logo"></use>
                 </svg>
