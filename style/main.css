@@ -86,7 +86,7 @@ main {
 	width: 6px;
 	height: 318px;
 	top: -233px;
-    right: 189px;
+    	right: 189px;
 }
 
 .sale-label {
@@ -95,7 +95,7 @@ main {
 	width: 189px;
 	height: 138px;
 	bottom: -98px;
-    left: -5px;
+    	left: -5px;
 }
 
 .main-title {
@@ -124,13 +124,13 @@ main {
 
 .main-ellipse {
 	background: radial-gradient(50% 50% at 50% 50%, #fe64fa 0%, rgba(239, 111, 53, 0) 100%);
-    position: absolute;
-    top: -1325px;
-    right: -827px;
-    z-index: 1;
-    width: 1500px;
-    height: 2000px;
-    opacity: .4;
+    	position: absolute;
+    	top: -1325px;
+    	right: -827px;
+    	z-index: 1;
+    	width: 1500px;
+    	height: 2000px;
+    	opacity: .4;
 }
 
 .star {
@@ -138,7 +138,7 @@ main {
 	height: 333px;
 	position: absolute;
 	top: 56px;
-    right: 78px;
+    	right: 78px;
 	z-index: 2;
 }
 
